@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1#title= title
+  h3#info
+
+    script(type='text/javascript').
+      var updateInfo = function() {
+        var page = getPageSize();
+        var device = getDeviceInfo(page);
+        $('#info').html('Device: '+device.deviceType
+          +'<br>Size: '+device.width+' x '+device.height
+          +'<br>Mobile: '+device.isMobile
+          +'<br>Portrait: '+device.isPortrait);
+      }
+      $(document).ready(updateInfo);
+      $(window).resize(updateInfo);
